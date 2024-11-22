@@ -1,7 +1,7 @@
 package adapter;
 import protocol.Protocol;
 import protocol.Protocol;
-class DebugSession /*extends ProtocolServer*/ {
+class DebugSession extends ProtocolServer {
 
 	private var _debuggerLinesStartAt1: Bool;
 	private var _debuggerColumnsStartAt1: Bool;
@@ -70,7 +70,6 @@ class DebugSession /*extends ProtocolServer*/ {
 	}
 
 	function sendErrorResponse<T>(response: Response<T>, codeOrMessage: haxe.ds.Either<Int, Message>, ?format:String, ?variables:Any/*, dest: ErrorDestination = ErrorDestination.User*/):Void {
-
 		// let msg : Message;
 		// if (typeof codeOrMessage == 'number') {
 		// 	msg = <Message> {
@@ -378,7 +377,7 @@ class DebugSession /*extends ProtocolServer*/ {
 		this.sendResponse(response);
 	}
 
-	function setFunctionBreakPointsRequest(response: SetFunctionBreakpointsResponse, args: SetFunctionBreakpointsArguments, ?request: Request):Void {
+	function setFunctionBreakPointsRequest(response: SetFunctionBreakpointsResponse, args: SetFunctionBreakpointsArguments, ?request: SetFunctionBreakpointsRequest):Void {
 		this.sendResponse(response);
 	}
 
